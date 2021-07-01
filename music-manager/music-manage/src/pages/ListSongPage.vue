@@ -57,8 +57,8 @@ export default {
                 singerName: '',     //歌手名字
                 songName: ''        //歌曲名字
             },
-            tableData: [],
-            tempData: [],
+            tableData: [],//真正显示的数据
+            tempData: [],//所有数据
             select_word: '',
             idx: -1,          //当前选择项
             multipleSelection: [],   //哪些项已经打勾
