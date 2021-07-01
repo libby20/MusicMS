@@ -344,8 +344,8 @@ export default {
         //切换播放歌曲
         setSongUrl(url,name) {
             this.toggle = name;
-            this.$store.commit('setUrl',this.$store.state.HOST + url);
-            if(this.isPlay){
+            this.$store.commit('setUrl',this.$store.state.HOST + url);//访问音乐地址
+            if(this.isPlay){//默认不播放
                 this.$store.commit('setIsPlay',false);
             }else{
                 this.$store.commit('setIsPlay',true);

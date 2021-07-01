@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class FileConfig  implements WebMvcConfigurer {
 
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
+        //所有img/singerPic/**开头的请求 都会去后面配置的路径下查找资源
         //定位歌手头像地址
         registry.addResourceHandler("/img/singerPic/**").addResourceLocations(
                 "file:"+System.getProperty("user.dir")+System.getProperty("file.separator")+"img"
