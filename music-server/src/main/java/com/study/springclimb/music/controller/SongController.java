@@ -122,6 +122,7 @@ public class SongController {
     @RequestMapping(value = "/updateSongPic", method = RequestMethod.POST)
     public Object updateSongPic(@RequestParam("file") MultipartFile avatorFile, @RequestParam("id") int id) {
         JSONObject jsonObject = new JSONObject();
+        //如果文件是空的，直接返回
         if (avatorFile.isEmpty()) {
             jsonObject.put(Consts.CODE, 0);
             jsonObject.put(Consts.MSG, "文件上传失败");
@@ -142,7 +143,7 @@ public class SongController {
         //存储到数据库里的相对文件地址
         String storeAvatorPath = "/img/songPic/" + fileName;
         try {
-            avatorFile.transferTo(dest);
+            avatorFile.transferTo(dest);//上传
             Song song = new Song();
             song.setId(id);
             song.setPic(storeAvatorPath);
