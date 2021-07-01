@@ -72,7 +72,9 @@ export const mixin = {
         },
         //批量删除已经选择的项
         delAll(){
+            //遍历被选中的元素，循环删除
             for(let item of this.multipleSelection){
+                //弹出删除窗口
                 this.handleDelete(item.id);
                 this.deleteRow();
             }
