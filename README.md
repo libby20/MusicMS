@@ -8,7 +8,7 @@
 
 #### 前端 安装教程
 
-需要有node.js环境，新版即可，
+需要有node.js环境，不建议使用最新版，可能有bug
 运行需要在项目根目录下，例如：
 ![示例](music-manager/music-manage/static/%E6%8D%95%E8%8E%B7.PNG)
 * 1.  npm install（安装运行环境） 
@@ -33,7 +33,11 @@
 ![示例图片](music-manager/music-manage/static/4.PNG)
 
 #### 需要注意
-*.运行前台时提示 ”'webpack-dev-server' 不是内部或外部命令，也不是可运行的程序或批处理文件“ 的话执行 npm install webpack-dev-server --save-dev
+* 运行前台时提示 ”'webpack-dev-server' 不是内部或外部命令，也不是可运行的程序或批处理文件“ 
+* 解决方案： npm install webpack-dev-server --save-dev
+* 一般是node环境问题，当启动报如下错误时
+  ![输入图片说明](music-manager/music-manage/static/5.PNG)
+*解决方案，如图，我的music-client下根本没有static文件夹，只有dist下有，全局搜索copyWebpackPlugin、将关于static的地址全部改为../dist/static，异常解决
 #### 参与贡献
 
 1.  Fork 本仓库
