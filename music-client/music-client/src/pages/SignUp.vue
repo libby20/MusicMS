@@ -1,6 +1,7 @@
 <template>
 <div>
-    <loginLogo/>
+<!--    <loginLogo/>-->
+  <img src="../../dist/static/img/background.jpg" class="background">
     <div class="signUp">
         <div class="signUp-head">
             <span>用户注册</span>
@@ -69,7 +70,7 @@ export default {
             },
             cities: [],            //所有的地区--省
             rules: {}               //表单提交的规则
-        }        
+        }
     },
     created() {
         this.rules = rules;
@@ -113,5 +114,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.background{
+  width:100%;
+  height: 100%;
+  background: yellow;
+  position: absolute;
+}
+.signUp{
+  margin-top: 70px;
+}
 @import '../assets/css/sign-up.scss';
 </style>

@@ -1,6 +1,7 @@
 <template>
 <div>
-    <loginLogo/>
+<!--    <loginLogo/>-->
+  <img src="../../dist/static/img/background.jpg" class="background">
     <div class="signUp">
         <div class="signUp-head">
             <span>帐号登录</span>
@@ -12,7 +13,7 @@
             <el-form-item prop="password" label="密码">
                 <el-input type="password" v-model="loginForm.password" placeholder="密码"></el-input>
             </el-form-item>
-            
+
             <div class="login-btn">
                 <el-button @click="goSignUp">注册</el-button>
                 <el-button type="primary" @click="handleLoginIn">登录</el-button>
@@ -46,7 +47,7 @@ export default {
                     { required: true, trigger: 'blur',message: '请输入密码' }
                 ]
             }
-        }    
+        }
     },
     mounted() {
         this.changeIndex('登录');
@@ -64,7 +65,7 @@ export default {
                         _this.$store.commit('setLoginIn',true);
                         _this.$store.commit('setUserId',res.userMsg.id);
                         _this.$store.commit('setUsername',res.userMsg.username);
-                        _this.$store.commit('setAvator',res.userMsg.avator);                                                
+                        _this.$store.commit('setAvator',res.userMsg.avator);
                         setTimeout(function(){
                             _this.changeIndex('首页');
                             _this.$router.push({path: '/'});
@@ -90,7 +91,14 @@ export default {
 
 <style lang="scss" scoped>
 .signUp{
-    margin-top: 138px;
+    margin-top: 230px;
+    margin-right: 500px;
+}
+.background{
+           width:100%;
+           height: 100%;
+           background: yellow;
+           position: absolute;
 }
 @import '../assets/css/sign-up.scss';
 </style>
