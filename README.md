@@ -32,7 +32,8 @@
 ![示例图片](music-manager/music-manage/static/3.PNG)
 ![示例图片](music-manager/music-manage/static/4.PNG)
 
-
+#### 需要注意
+*.运行前台时提示 ”'webpack-dev-server' 不是内部或外部命令，也不是可运行的程序或批处理文件“ 的话执行 npm install webpack-dev-server --save-dev
 #### 参与贡献
 
 1.  Fork 本仓库
