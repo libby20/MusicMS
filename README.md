@@ -2,24 +2,42 @@
 
 #### 介绍
 音乐网站播放器+音乐网站管理系统+音乐网站后台
-使用vue+springboot技术的前后端分离项目
 
 #### 软件架构
-软件架构说明
+使用vue+springboot+mybatis-plus+mysql技术的前后端分离项目
 
+#### 前端 安装教程
 
-#### 安装教程
+需要有node.js环境，不建议使用最新版，可能有bug
+运行需要在项目根目录下，例如：
+![示例](music-manager/music-manage/static/%E6%8D%95%E8%8E%B7.PNG)
+* 1.  npm install（安装运行环境） 
+* 2.  npm run dev（运行）
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 后端 安装教程
+* 1.配置maven仓库，刷新maven
+* 2.创建music数据库，执行数据库脚本
+* 3.更改application.properties数据源
+* 4.静态资源和src文件夹同级文件名为config文件夹下的FileConfig配置
+* 5.启动
 
-#### 使用说明
+#### 静态图片资源
+链接：https://pan.baidu.com/s/1ou7U4PJi7VDeEyhTImaIKg 
+提取码：9w2i
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 示例图片
+##### 前台管理端
+![示例图片](music-manager/music-manage/static/1.PNG)
+![示例图片](music-manager/music-manage/static/2.PNG)
+![示例图片](music-manager/music-manage/static/3.PNG)
+![示例图片](music-manager/music-manage/static/4.PNG)
 
+#### 需要注意
+* 运行前台时提示 ”'webpack-dev-server' 不是内部或外部命令，也不是可运行的程序或批处理文件“ 
+* 解决方案： npm install webpack-dev-server --save-dev
+* 一般是node环境问题，当启动报如下错误时
+  ![输入图片说明](music-manager/music-manage/static/5.PNG)
+*解决方案，如图，我的music-client下根本没有static文件夹，只有dist下有，全局搜索copyWebpackPlugin、将关于static的地址全部改为../dist/static，异常解决
 #### 参与贡献
 
 1.  Fork 本仓库
