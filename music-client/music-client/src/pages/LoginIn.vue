@@ -69,7 +69,7 @@ export default {
                         setTimeout(function(){
                             _this.changeIndex('首页');
                             _this.$router.push({path: '/'});
-                        },2000);
+                        },100);
                     }else{
                         _this.notify('用户名或密码错误','error');
                     }
