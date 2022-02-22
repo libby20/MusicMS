@@ -26,6 +26,11 @@
 提取码：9w2i
 
 #### 示例图片
+##### 前台
+![示例图片](music-manager/music-manage/static/6.PNG)
+![示例图片](music-manager/music-manage/static/7.PNG)
+![示例图片](music-manager/music-manage/static/8.PNG)
+![示例图片](music-manager/music-manage/static/9.PNG)
 ##### 前台管理端
 ![示例图片](music-manager/music-manage/static/1.PNG)
 ![示例图片](music-manager/music-manage/static/2.PNG)
@@ -38,13 +43,13 @@
 * 一般是node环境问题，当启动报如下错误时
   ![输入图片说明](music-manager/music-manage/static/5.PNG)
 *解决方案，如图，我的music-client下根本没有static文件夹，只有dist下有，全局搜索copyWebpackPlugin、将关于static的地址全部改为../dist/static，异常解决
+
 #### 参与贡献
 
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
 
 #### 特技
 
