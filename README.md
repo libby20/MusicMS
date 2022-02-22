@@ -11,15 +11,15 @@
 需要有node.js环境，新版即可，
 运行需要在项目根目录下，例如：
 ![示例](music-manager/music-manage/static/%E6%8D%95%E8%8E%B7.PNG)
-1.  npm install（安装运行环境） 
-2.  npm run dev（运行）
+* 1.  npm install（安装运行环境） 
+* 2.  npm run dev（运行）
 
 #### 后端 安装教程
-1.配置maven仓库，刷新maven
-2.创建music数据库，执行数据库脚本
-3.更改aplication.properties数据源
-4.静态资源和src文件夹同级文件名为config文件夹下的FileConfig配置
-5.启动
+* 1.配置maven仓库，刷新maven
+* 2.创建music数据库，执行数据库脚本
+* 3.更改aplication.properties数据源
+* 4.静态资源和src文件夹同级文件名为config文件夹下的FileConfig配置
+* 5.启动
 
 #### 静态图片资源
 链接：https://pan.baidu.com/s/1ou7U4PJi7VDeEyhTImaIKg 
