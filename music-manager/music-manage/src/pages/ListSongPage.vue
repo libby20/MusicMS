@@ -11,33 +11,50 @@
             </div>
         </div>
         <el-table size="mini" ref="multipleTable" border style="width:100%" height="680px" :data="tableData" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="40"></el-table-column>            
-            <el-table-column prop="name" label="歌手-歌名" align="center"></el-table-column>            
+            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column prop="name" label="歌手-歌名" align="center"></el-table-column>
             <el-table-column label="操作" width="150" align="center">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="handleDelete(scope.row.id)">删除</el-button> 
+                    <el-button size="mini" type="danger" @click="handleDelete(scope.row.id)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
         <el-dialog title="添加歌曲" :visible.sync="centerDialogVisible" width="400px" center>
-            <el-form :model="registerForm" ref="registerForm" label-width="80px" action="" id="tf">
-                <el-form-item prop="singerName" label="歌手名字" size="mini">
-                    <el-input v-model="registerForm.singerName" placeholder="歌手名字"></el-input>
-                </el-form-item> 
-                <el-form-item prop="songName" label="歌曲名字" size="mini">
-                    <el-input v-model="registerForm.songName" placeholder="歌曲名字"></el-input>
-                </el-form-item>  
-            </el-form>
+<!--            <el-form :model="registerForm" ref="registerForm" label-width="80px" action="" id="tf">-->
+<!--                <el-form-item prop="singerName" label="歌手名字" size="mini">-->
+<!--                    <el-input v-model="registerForm.singerName" placeholder="歌手名字"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item prop="songName" label="歌曲名字" size="mini">-->
+<!--                    <el-input v-model="registerForm.songName" placeholder="歌曲名字"></el-input>-->
+<!--                </el-form-item>-->
+<!--            </el-form>-->
+          歌手：<el-select v-model="value" filterable placeholder="请选择" @focus="showSingerName">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+          </el-select>
+          歌曲：<el-select v-model="song" filterable placeholder="请选择" @focus="showSongNameBySingerName">
+          <el-option
+            v-for="item in songOptions"
+            :key="item.songValue"
+            :label="item.songLabel"
+            :value="item.songValue">
+          </el-option>
+          </el-select>
+
             <span slot="footer">
                 <el-button size="mini" @click="centerDialogVisible = false">取消</el-button>
-                <el-button size="mini" @click="getSongId">确定</el-button>                
+                <el-button size="mini" @click="addSong">确定</el-button>
             </span>
         </el-dialog>
         <el-dialog title="删除歌曲" :visible.sync="delVisible" width="300px" center>
             <div align="center">删除不可恢复，是否确定删除？</div>
             <span slot="footer">
                 <el-button size="mini" @click="delVisible = false">取消</el-button>
-                <el-button size="mini" @click="deleteRow">确定</el-button>                
+                <el-button size="mini" @click="deleteRow">确定</el-button>
             </span>
         </el-dialog>
     </div>
@@ -45,7 +62,15 @@
 
 <script>
 import { mixin } from '../mixins/index';
-import {listSongDetail,songOfSongId,songOfSongName,listSongAdd,delListSong} from '../api/index';
+import {
+  listSongDetail,
+  songOfSongId,
+  songOfSongName,
+  listSongAdd,
+  delListSong,
+  getAllSinger,
+  songOfSingerId
+} from '../api/index';
 
 export default {
     mixins: [mixin],
@@ -53,10 +78,20 @@ export default {
         return{
             centerDialogVisible: false, //添加弹窗是否显示
             delVisible: false,          //删除弹窗是否显示
-            registerForm:{      //添加框
-                singerName: '',     //歌手名字
-                songName: ''        //歌曲名字
-            },
+            // registerForm:{      //添加框
+            //     singerName: '',     //歌手名字
+            //     songName: ''        //歌曲名字
+            // },
+            options: [
+
+            ],
+            value:'',
+            singerName:'',
+            songOptions: [
+
+            ],
+            song:'',
+            songName:'',
             tableData: [],
             tempData: [],
             select_word: '',
@@ -85,7 +120,23 @@ export default {
         this.getData();
     },
     methods:{
-        //查询所有歌手
+      //根据歌手id查询歌曲名称列表
+      showSongNameBySingerName(){
+        songOfSingerId(this.value).then(res=>{
+          this.songOptions=res.filter(function (s){
+            return s.songValue=s.id,s.songLabel=s.name;
+          });
+        })
+      },
+      //查询所有歌手列表
+        showSingerName(){
+          getAllSinger().then(res => {
+            this.options=res.filter(function (s){
+              return s.value=s.id,s.label=s.name;
+            })
+          })
+        },
+        //根据歌单id查询歌曲列表
         getData(){
             this.tempData = [];
             this.tableData = [];
@@ -106,21 +157,21 @@ export default {
                 console.log(err);
             });
         },
-        //添加歌曲前的准备，获取到歌曲id        
-        getSongId(){
-            let _this = this;
-            var songOfName = _this.registerForm.singerName+"-"+_this.registerForm.songName;
-            songOfSongName(songOfName).then(
-                res => {
-                    _this.addSong(res[0].id)
-                }
-            )
-        },
+        //添加歌曲前的准备，获取到歌曲id
+        // getSongId(){
+        //     let _this = this;
+        //     var songOfName = _this.registerForm.singerName+"-"+_this.registerForm.songName;
+        //     songOfSongName(songOfName).then(
+        //         res => {
+        //             _this.addSong(res[0].id)
+        //         }
+        //     )
+        // },
         //添加歌曲
-        addSong(songId){
+        addSong(){
             let _this = this;
             let params = new URLSearchParams();
-            params.append('songId',songId);
+            params.append('songId',this.song);
             params.append('songListId',this.songListId);
 
             listSongAdd(params)
@@ -153,7 +204,7 @@ export default {
             });
             this.delVisible = false;
         }
-    }   
+    }
 }
 </script>
 
