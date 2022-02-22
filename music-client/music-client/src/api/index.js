@@ -40,7 +40,7 @@ export const getUserOfId =(id) => get(`/consumer/selectByPrimaryKey?id=${id}`);
 //更新用户信息
 export const updateUserMsg =(params) => post(`/consumer/update`,params);
 
-//下载音乐
+//下载音乐 get文件流转成blob下载
 export const download = (url)  => Axios({
     method: 'get',
     url: url,

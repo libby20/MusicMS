@@ -42,7 +42,7 @@
                 <div @click="goback(-1)">取消</div>
             </div>
         </div>
-        
+
     </div>
 </div>
 </template>
@@ -69,7 +69,7 @@ export default {
             },
             cities: [],            //所有的地区--省
             rules: {}               //表单提交的规则
-        }        
+        }
     },
     computed:{
         ...mapGetters([
@@ -95,7 +95,7 @@ export default {
                     this.registerForm.birth = res.birth;
                     this.registerForm.introduction = res.introduction;
                     this.registerForm.location = res.location;
-                                
+
                 })
                 .catch(err => {
                     console.log(err);

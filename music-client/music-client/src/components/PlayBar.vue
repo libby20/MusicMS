@@ -355,6 +355,7 @@ export default {
         download() {
             download(this.url)
             .then(res=>{
+                //触发下载
                 let content = res.data;
                 let eleLink = document.createElement('a');
                 eleLink.download = `${this.artist}-${this.title}.mp3`;
@@ -368,6 +369,7 @@ export default {
                 eleLink.click();
                 //然后移除掉这个新加的控件
                 document.body.removeChild(eleLink);
+                console.log(" download success")
             })
             .catch(err =>{
                 console.log(err);
