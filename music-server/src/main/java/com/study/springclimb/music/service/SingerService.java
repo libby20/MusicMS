@@ -1,6 +1,13 @@
 package com.study.springclimb.music.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.study.springclimb.music.entity.Collect;
 import com.study.springclimb.music.entity.Singer;
+import com.study.springclimb.music.utils.PageRequest;
+import com.study.springclimb.music.utils.PageUtils;
+import com.study.springclimb.music.utils.R;
 
 import java.util.List;
 
@@ -10,7 +17,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-06-10 18:25:23
  */
-public interface SingerService {
+public interface SingerService extends IService<Singer> {
 
     /**
      * 通过ID查询单条数据
@@ -67,5 +74,7 @@ public interface SingerService {
 
     //通过sex模糊查询
     List<Singer> singerOfSex(Integer singerId);
+
+    PageUtils selectSingerByPage(PageRequest pageRequest);
 
 }

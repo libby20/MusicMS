@@ -1,8 +1,14 @@
 package com.study.springclimb.music.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.springclimb.music.entity.Singer;
 import com.study.springclimb.music.dao.SingerDao;
 import com.study.springclimb.music.service.SingerService;
+import com.study.springclimb.music.utils.PageRequest;
+import com.study.springclimb.music.utils.PageUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,8 +20,8 @@ import java.util.List;
  * @author makejava
  * @since 2021-06-10 18:25:23
  */
-@Service("singerService")
-public class SingerServiceImpl implements SingerService {
+@Service
+public class SingerServiceImpl extends ServiceImpl<SingerDao,Singer> implements SingerService {
     @Resource
     private SingerDao singerDao;
 
@@ -88,5 +94,20 @@ public class SingerServiceImpl implements SingerService {
     @Override
     public List<Singer> singerOfSex(Integer sex) {
         return singerDao.singerOfSex(sex);
+    }
+
+    @Override
+    public PageUtils selectSingerByPage(PageRequest pageRequest){
+        Page page = this.page(pageRequest.toMybatisPage(),
+                      new LambdaQueryWrapper<Singer>()
+                        .like(StringUtils.isNotBlank(pageRequest.getSearchKey()),Singer::getName, pageRequest.getSearchKey())
+//                        .or()
+//                        .like(StringUtils.isNotBlank(pageRequest.getSearchKey()),Singer::getSex, pageRequest.getSearchKey())
+//                        .or()
+//                        .like(StringUtils.isNotBlank(pageRequest.getSearchKey()),Singer::getBirth, pageRequest.getSearchKey())
+//                        .or()
+//                        .like(StringUtils.isNotBlank(pageRequest.getSearchKey()),Singer::getLocation, pageRequest.getSearchKey())
+        );
+        return new PageUtils(page);
     }
 }

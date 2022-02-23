@@ -1,5 +1,6 @@
 package com.study.springclimb.music.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.study.springclimb.music.entity.Singer;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-06-10 18:25:23
  */
-public interface SingerDao {
+public interface SingerDao extends BaseMapper<Singer> {
 
     /**
      * 通过ID查询单条数据

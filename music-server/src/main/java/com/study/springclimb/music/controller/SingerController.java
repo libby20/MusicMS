@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.study.springclimb.music.entity.Singer;
 import com.study.springclimb.music.service.SingerService;
 import com.study.springclimb.music.utils.Consts;
+import com.study.springclimb.music.utils.PageRequest;
+import com.study.springclimb.music.utils.R;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -87,6 +89,11 @@ public class SingerController {
         //System.out.println("查询所有歌手成功");
         return singerService.queryAll();//直接返回列表
     }
+    @PostMapping ("list")
+    public R singerList(@RequestBody PageRequest pageRequest){
+        return R.ok().data("data",singerService.selectSingerByPage(pageRequest));
+    }
+
 
     //根据歌手name模糊查询
     @RequestMapping("singersOfName")
