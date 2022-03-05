@@ -109,7 +109,7 @@ export default {
             },
             singerSex:{           //按性别分类的歌手数
                 columns: ['性别','总数'],
-                rows: [                    
+                rows: [
                     {'性别': '女','总数': 0},
                     {'性别': '男','总数': 0},
                     {'性别': '组合','总数': 0},
@@ -126,7 +126,7 @@ export default {
                     {'国籍': '新加坡','总数': 0},
                     {'国籍': '意大利','总数': 0},
                     {'国籍': '马来西亚','总数': 0},
-                    {'国籍': '西班牙','总数': 0}                    
+                    {'国籍': '西班牙','总数': 0}
                 ]
             }
         }
@@ -148,7 +148,7 @@ export default {
                 this.consumerSex.rows[0]['总数'] = this.setSex(1,this.consumer);
                 this.consumerSex.rows[1]['总数'] = this.setSex(0,this.consumer);
             })
-        },  
+        },
         setSex(sex,val) {              //根据性别获取用户数
             let count = 0;
             for(let item of val){
@@ -183,7 +183,7 @@ export default {
                     this.getByStyle(item.style);
                 }
             })
-        },  
+        },
         getByStyle(style) {              //根据歌单风格获取数量
             for(let item of this.songStyle.rows){
                 if(style.includes(item['风格'])){

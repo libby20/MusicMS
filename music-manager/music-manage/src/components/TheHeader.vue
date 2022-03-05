@@ -1,9 +1,9 @@
 <template>
     <div class="header">
         <!-- 折叠图片 -->
-        <div class="collapse-btn" @click="collapseChange">
-            <i class="el-icon-menu"></i>
-        </div>
+<!--        <div class="collapse-btn" @click="collapseChange">-->
+<!--            <i class="el-icon-menu"></i>-->
+<!--        </div>-->
         <div class="logo">music后台管理</div>
         <div class="header-right">
             <div class="btn-fullscreen" @click="handleFullScreen">
@@ -16,7 +16,7 @@
             </div>
             <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
-                    {{userName}}                    
+                    {{userName}}
                     <i class="el-icon-caret-bottom"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -58,7 +58,7 @@ export default {
                     document.mozCancelFullScreen();
                 }else if(document.msExitFullScreen){            //ie
                     document.msExitFullScreen();
-                }               
+                }
             }else{
                 let element = document.documentElement;
                 if(element.requestFullscreen){
@@ -103,7 +103,9 @@ export default {
 
 .header .logo{
     float: left;
+    margin-left: 50px;
     line-height: 70px;
+    font-weight: bold;
 }
 
 .header-right{

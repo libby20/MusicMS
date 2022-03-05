@@ -45,6 +45,7 @@
 
 /*搜索*/
 .header-search {
+  margin-left: 860px;
   @include layout;
   border-radius: $header-search-radius;
   overflow: hidden;
@@ -53,6 +54,7 @@
     width: $header-search-width;
     font-size: $font-size-default;
     border: 0;
+
     text-indent: 10px;
     background-color: $color-light-grey;
     &:focus {

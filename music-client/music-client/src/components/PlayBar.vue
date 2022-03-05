@@ -2,7 +2,7 @@
     <div class="play-bar" :class="{show:!toggle}">
         <div @click="toggle=!toggle" class="item-up" :class="{turn: toggle}">
             <svg class="icon">
-                <use xlink:href="#icon-jiantou-xia-cuxiantiao"></use>
+                <use xlink:href="#icon-jiantou-shang-cuxiantiao"></use>
             </svg>
         </div>
         <div class="kongjian">
@@ -76,7 +76,7 @@
                         <use xlink:href="#icon-liebiao"></use>
                     </svg>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -319,7 +319,7 @@ export default {
             //对于歌词格式不对的直接返回
             if(!(/\[.+\]/.test(text))){
                 return [[0,text]]
-            }        
+            }
             //去掉前面格式不正确的行
             while(!pattern.test(lines[0])){
                 lines = lines.slice(1);
@@ -332,8 +332,8 @@ export default {
                     let t = item1.slice(1,-1).split(":");   //取出时间，换算成数组
                     if(value!=''){
                         result.push([parseInt(t[0],10)*60 + parseFloat(t[1]),value]);
-                    }                    
-                }                
+                    }
+                }
             }
             //按照第一个元素--时间--排序
             result.sort(function(a,b){
@@ -351,10 +351,11 @@ export default {
                 this.openLyric = false;
             }
         },
-        //下载音乐
+        //下载音乐******
         download() {
             download(this.url)
             .then(res=>{
+                //触发下载
                 let content = res.data;
                 let eleLink = document.createElement('a');
                 eleLink.download = `${this.artist}-${this.title}.mp3`;
@@ -368,6 +369,7 @@ export default {
                 eleLink.click();
                 //然后移除掉这个新加的控件
                 document.body.removeChild(eleLink);
+                console.log(" download success")
             })
             .catch(err =>{
                 console.log(err);
