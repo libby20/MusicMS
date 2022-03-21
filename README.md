@@ -10,7 +10,7 @@
 - 需要有node.js环境，不建议使用最新版，可能有bug
 - node官网下载位置：https://nodejs.org/download/release/v12.14.1/
 - 我这边用的12.14.1 选择msi文件根据自己电脑版本下载安装包，
-- 安装后打开cmd页面  输入node-v  \ npm -v 返回正确版本号表示安装成功
+- 安装后打开cmd页面  输入node-v  \ npm -v 返回版本号表示安装成功
 - 运行需要在项目根目录下，例如：
 ![示例](music-manager/music-manage/static/%E6%8D%95%E8%8E%B7.PNG)
 * 1.  npm install（安装运行环境） 
