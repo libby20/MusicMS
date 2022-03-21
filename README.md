@@ -21,7 +21,7 @@
 * 4.静态资源和src文件夹同级文件名为config文件夹下的FileConfig配置
 * 5.启动
 
-#### 静态图片资源
+#### 图片及歌曲资源
 链接：https://pan.baidu.com/s/1ou7U4PJi7VDeEyhTImaIKg 
 提取码：9w2i
 
