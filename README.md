@@ -17,9 +17,9 @@
 #### 后端 安装教程
 * 1.配置maven仓库，刷新maven
 * 2.创建music数据库，执行数据库脚本
-* 3.更改application.properties数据源
-* 4.静态资源和src文件夹同级文件名为config文件夹下的FileConfig配置
-* 5.启动
+* 3.修改application.properties配置文件
+* 4.静态资源和src文件夹同级，文件名参考config文件夹下的FileConfig配置
+* 5.主类启动
 
 #### 图片及歌曲资源
 链接：https://pan.baidu.com/s/1ou7U4PJi7VDeEyhTImaIKg 
