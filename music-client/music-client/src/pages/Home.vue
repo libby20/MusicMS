@@ -11,7 +11,7 @@
 <script>
 import Swiper from "../components/Swiper";
 import contentList from '../components/ContentList';
-import {getAllSinger,getAllSongList} from '../api/index';
+import {getAllSinger,getAllSongList,getAllSong} from '../api/index';
 export default {
   name: 'home',
   components: {
@@ -22,13 +22,15 @@ export default {
     return {
       songsList: [
         {name:"歌单",list: []},
-        {name:"歌手",list: []}
+        {name:"歌手",list: []},
+        {name:"歌曲",list: []}
       ]
     }
   },
   created () {
    this.getSongList();
    this.getSinger();
+   this.getAllSong();
   },
   methods: {
     getSongList(){                      //获取前十条歌单
@@ -41,6 +43,13 @@ export default {
     getSinger(){                      //获取前十名歌手
       getAllSinger().then((res) => {
         this.songsList[1].list = res.slice(0,10);
+      }).catch((err) => {
+        console.log(err);
+      })
+    },
+    getAllSong(){                     //获取前十名歌曲
+      getAllSong().then((res) => {
+        this.songsList[2].list = res.slice(0,10);
       }).catch((err) => {
         console.log(err);
       })

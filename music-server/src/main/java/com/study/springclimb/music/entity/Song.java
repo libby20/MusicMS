@@ -46,5 +46,7 @@ public class Song extends Model<Song> {
     private String lyric;
     //歌曲地址
     private String url;
+    //播放量
+    private Long viewCounts;
 
 }

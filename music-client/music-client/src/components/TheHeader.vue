@@ -1,10 +1,7 @@
 <template>
   <div class="the-header">
     <div class="header-logo" @click="goHome">
-        <svg class="icon">
-            <use xlink:href = "#icon-erji"></use>
-        </svg>
-        <span>music</span>
+        <span>校园在线音乐管理系统</span>
     </div>
     <ul class="navbar">
         <li :class="{active: item.name == activeName}" v-for="item in navMsg" :key="item.path" @click="goPage(item.path,item.name)">

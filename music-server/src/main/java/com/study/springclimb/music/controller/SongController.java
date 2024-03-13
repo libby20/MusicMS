@@ -201,4 +201,12 @@ public class SongController {
     public Object allSong() {
         return songService.list(null);
     }
+
+    /**
+     * 根据播放量降序查询所有歌曲
+     */
+    @RequestMapping(value = "/allSongasViewCounts",method = RequestMethod.GET)
+    public Object allSongasViewCounts(){
+        return songService.allSongasViewCounts();
+    }
 }

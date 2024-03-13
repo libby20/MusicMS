@@ -36,4 +36,10 @@ public class SongServiceImpl extends ServiceImpl<SongDao, Song> implements SongS
         List<Song> songs = dao.selectList(queryWrapper);
         return songs;
     }
+    @Override
+    public List<Song> allSongasViewCounts(){
+        QueryWrapper<Song> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("view_counts");
+        return dao.selectList(queryWrapper);
+    }
 }

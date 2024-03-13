@@ -11,12 +11,12 @@ import LoginIn from '@/pages/LoginIn'
 import Setting from '@/pages/Setting'
 import SingerAlbum from '@/pages/SingerAlbum'
 import SongListAlbum from '@/pages/SongListAlbum'
-
+import SongAlbum from '@/pages/SongAlbum'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [    
+  routes: [
     {
       path: '/',
       name: 'home',
@@ -71,8 +71,16 @@ export default new Router({
       path: '/song-list-album/:id',
       name: 'song-list-album',
       component: SongListAlbum
+    },
+    {
+      path: '/song-album/:id',
+      name: 'song-album',
+      component: resolve => require(['../pages/SongAlbum.vue'], resolve)
+    },
+    {
+      path: '/songreco',
+      component: resolve => require(['../pages/SongReco.vue'], resolve)
     }
-    
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

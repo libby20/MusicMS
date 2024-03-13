@@ -28,11 +28,13 @@ import {mixin} from '../mixins';
 import {mapGetters} from 'vuex';
 import {songOfSingerId} from '../api/index';
 import AlbumContent from "../components/AlbumContent";
+import Comment from "../components/Comment";
 export default {
     name: 'singer-album',
     mixins: [mixin],
     components:{
-        AlbumContent
+        AlbumContent,
+        Comment
     },
     data(){
         return {

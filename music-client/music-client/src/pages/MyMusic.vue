@@ -8,7 +8,7 @@
                 <li>昵称:{{username}}</li>
                 <li>性别:{{userSex}}</li>
                 <li>生日：{{birth}}</li>
-                <li>故乡：{{location}}</li>
+                <li>地区：{{location}}</li>
             </ul>
         </div>
         <div class="album-content">

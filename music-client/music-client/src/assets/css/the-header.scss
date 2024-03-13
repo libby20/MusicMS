@@ -17,8 +17,9 @@
 
 .header-logo {
   margin: $header-logo-margin;
-  font-size: $font-size-logo;
+  font-size: 20px;
   font-weight: bold;
+  margin-left: -60px;
   white-space: nowrap;
   cursor: pointer;
   .icon {
@@ -34,8 +35,8 @@
   li {
     margin: $header-nav-margin;
     padding: $header-nav-padding;
-    font-size: $font-size-header;
-    color: $color-grey;
+    font-size: 16px;
+    color: #000;
     text-align: center;
     border-bottom: none;
     box-sizing: border-box;

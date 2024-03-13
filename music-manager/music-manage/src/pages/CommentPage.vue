@@ -10,21 +10,21 @@
             </div>
         </div>
         <el-table size="mini" ref="multipleTable" border style="width:100%" height="680px" :data="tableData" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="40"></el-table-column>            
-            <el-table-column prop="name" label="用户名" align="center"></el-table-column>   
-            <el-table-column prop="content" label="评论内容" align="center"></el-table-column>           
+            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column prop="name" label="用户名" align="center"></el-table-column>
+            <el-table-column prop="content" label="评论内容" align="center"></el-table-column>
             <el-table-column label="操作" width="150" align="center">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button> 
+                    <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        
+
         <el-dialog title="删除评论" :visible.sync="delVisible" width="300px" center>
             <div align="center">删除不可恢复，是否确定删除？</div>
             <span slot="footer">
                 <el-button size="mini" @click="delVisible = false">取消</el-button>
-                <el-button size="mini" @click="deleteRow">确定</el-button>                
+                <el-button size="mini" @click="deleteRow">确定</el-button>
             </span>
         </el-dialog>
     </div>
@@ -32,7 +32,7 @@
 
 <script>
 import { mixin } from '../mixins/index';
-import {getUserOfId,getCommentOfSongListId,deleteComment} from '../api/index';
+import {getUserOfId,getCommentOfSongListId,deleteComment,allComment} from '../api/index';
 
 export default {
     mixins: [mixin],
@@ -70,11 +70,19 @@ export default {
         getData(){
             this.tempData = [];
             this.tableData = [];
-            getCommentOfSongListId(this.$route.query.id).then(res => {
+            /*getCommentOfSongListId(this.$route.query.id).then(res => {
                 for(let item of res){
                     this.getUsers(item.userId,item);
                 }
-            })
+            })*/
+          const fetchPromise = this.$route.query.id
+          ?getCommentOfSongListId(this.$route.query.id)
+            :allComment();
+          fetchPromise.then(res => {
+            for(let item of res){
+              this.getUsers(item.userId,item);
+            }
+          });
         },
         //获取用户名，连同本对象放到tempData和tableData里面
         getUsers(id,item){
@@ -113,7 +121,7 @@ export default {
             }
             this.multipleSelection = [];
         }
-    }   
+    }
 }
 </script>
 

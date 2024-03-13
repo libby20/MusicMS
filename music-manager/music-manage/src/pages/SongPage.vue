@@ -7,7 +7,7 @@
             <div class="handle-box">
                 <el-button type="primary" size="mini" @click="delAll">批量删除</el-button>
                 <el-input v-model="select_word" size="mini" placeholder="请输入歌曲名" class="handle-input"></el-input>
-                <el-button type="primary" size="mini" @click="centerDialogVisible = true">添加歌曲</el-button>
+<!--                <el-button type="primary" size="mini" @click="centerDialogVisible = true">添加歌曲</el-button>-->
             </div>
         </div>
         <el-table size="mini" ref="multipleTable" border style="width:100%" height="480px" :data="data" @selection-change="handleSelectionChange">
@@ -42,14 +42,15 @@
                     </ul>
                 </template>
             </el-table-column>
+          <el-table-column prop="viewCounts" label="播放量" width="120" align="center"></el-table-column>
             <el-table-column label="资源更新" align="center" width="100">
                 <template slot-scope="scope">
-                    <el-upload :action="uploadUrl(scope.row.id)" :before-upload="beforeAvatorUpload" 
+                    <el-upload :action="uploadUrl(scope.row.id)" :before-upload="beforeAvatorUpload"
                         :on-success="handleAvatorSuccess">
                         <el-button size="mini">更新图片</el-button>
                     </el-upload>
                     <br/>
-                    <el-upload :action="uploadSongUrl(scope.row.id)" :before-upload="beforeSongUpload" 
+                    <el-upload :action="uploadSongUrl(scope.row.id)" :before-upload="beforeSongUpload"
                         :on-success="handleSongSuccess">
                         <el-button size="mini">更新歌曲</el-button>
                     </el-upload>
@@ -59,7 +60,7 @@
             <el-table-column label="操作" width="150" align="center">
                 <template slot-scope="scope">
                     <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
-                    <el-button size="mini" type="danger" @click="handleDelete(scope.row.id)">删除</el-button> 
+                    <el-button size="mini" type="danger" @click="handleDelete(scope.row.id)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -75,49 +76,49 @@
             </el-pagination>
         </div>
 
-        <el-dialog title="添加歌曲" :visible.sync="centerDialogVisible" width="400px" center>
-            <el-form :model="registerForm" ref="registerForm" label-width="80px" enctype="multipart/form-data" id="tf">
-                <div>
-                    <label>歌名</label>
-                    <el-input type="text" name="name"></el-input>
-                </div>
-                <div>
-                    <label>专辑</label>
-                    <el-input type="text" name="introduction"></el-input>
-                </div>
-                <div>
-                    <label>歌词</label>
-                    <el-input type="textarea" name="lyric"></el-input>
-                </div>
-                <div>
-                    <br>
-                    <label>歌曲上传</label>
-                    
-                    <el-input type="file" name="file"></el-input>
-                </div>
-            </el-form>
-            <span slot="footer">
-                <el-button size="mini" @click="centerDialogVisible = false">取消</el-button>
-                <el-button size="mini" @click="addSong">确定</el-button>                
-            </span>
-        </el-dialog>
+<!--        <el-dialog title="添加歌曲" :visible.sync="centerDialogVisible" width="400px" center>-->
+<!--            <el-form :model="registerForm" ref="registerForm" label-width="80px" enctype="multipart/form-data" id="tf">-->
+<!--                <div>-->
+<!--                    <label>歌名</label>-->
+<!--                    <el-input type="text" name="name"></el-input>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>专辑</label>-->
+<!--                    <el-input type="text" name="introduction"></el-input>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>歌词</label>-->
+<!--                    <el-input type="textarea" name="lyric"></el-input>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <br>-->
+<!--                    <label>歌曲上传</label>-->
+
+<!--                    <el-input type="file" name="file"></el-input>-->
+<!--                </div>-->
+<!--            </el-form>-->
+<!--            <span slot="footer">-->
+<!--                <el-button size="mini" @click="centerDialogVisible = false">取消</el-button>-->
+<!--                <el-button size="mini" @click="addSong">确定</el-button>-->
+<!--            </span>-->
+<!--        </el-dialog>-->
 
         <el-dialog title="修改歌曲" :visible.sync="editVisible" width="400px" center>
             <el-form :model="form" ref="form" label-width="80px">
                 <el-form-item prop="name" label="歌手-歌名" size="mini">
                     <el-input v-model="form.name" placeholder="歌手-歌名"></el-input>
-                </el-form-item>                
+                </el-form-item>
                 <el-form-item prop="introduction" label="专辑" size="mini">
                     <el-input v-model="form.introduction" placeholder="专辑"></el-input>
-                </el-form-item> 
+                </el-form-item>
                 <el-form-item prop="lyric" label="歌词" size="mini">
                     <el-input v-model="form.lyric" placeholder="歌词" type="textarea"></el-input>
-                </el-form-item> 
-                
+                </el-form-item>
+
             </el-form>
             <span slot="footer">
                 <el-button size="mini" @click="editVisible = false">取消</el-button>
-                <el-button size="mini" @click="editSave">确定</el-button>                
+                <el-button size="mini" @click="editSave">确定</el-button>
             </span>
         </el-dialog>
 
@@ -125,7 +126,7 @@
             <div align="center">删除不可恢复，是否确定删除？</div>
             <span slot="footer">
                 <el-button size="mini" @click="delVisible = false">取消</el-button>
-                <el-button size="mini" @click="deleteRow">确定</el-button>                
+                <el-button size="mini" @click="deleteRow">确定</el-button>
             </span>
         </el-dialog>
     </div>
@@ -135,7 +136,7 @@
 import { mixin } from '../mixins/index';
 import {mapGetters} from 'vuex';
 import '@/assets/js/iconfont.js';
-import {songOfSingerId,updateSong,delSong, songAdd} from '../api/index';
+import {songOfSingerId,updateSong,delSong, songAdd,allSongasViewCounts} from '../api/index';
 
 export default {
     mixins: [mixin],
@@ -148,7 +149,7 @@ export default {
             delVisible: false,          //删除弹窗是否显示
             registerForm:{      //添加框
                 name: '',
-                singerName: '',                
+                singerName: '',
                 introduction: '',
                 lyric: ''
             },
@@ -209,11 +210,21 @@ export default {
         getData(){
             this.tempData = [];
             this.tableData = [];
-            songOfSingerId(this.singerId).then(res => {
+            /*songOfSingerId(this.singerId).then(res => {
                 this.tempData = res;
                 this.tableData = res;
                 this.currentPage = 1;
-            })
+            })*/
+          // Check if singerId exists
+          const fetchPromise = this.singerId
+            ? songOfSingerId(this.singerId)
+            : allSongasViewCounts();
+
+          fetchPromise.then(res => {
+            this.tempData = res;
+            this.tableData = res;
+            this.currentPage = 1;
+          });
         },
         //添加歌曲
         addSong(){
@@ -243,7 +254,7 @@ export default {
             }
             req.open('post',`${_this.$store.state.HOST}/song/add`,false);
             req.send(form);
-            _this.centerDialogVisible = false;
+            _this.centerDialogVisible = true;
 
         },
         //弹出编辑页面
@@ -351,7 +362,7 @@ export default {
                 this.$store.commit('setIsPlay',true);
             }
         }
-    }   
+    }
 }
 </script>
 

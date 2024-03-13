@@ -19,4 +19,7 @@ public interface SongService extends IService<Song> {
 
     //根据歌手id查询歌曲列表
     List<Song> songOfSingerId(Integer id);
+
+    //根据播放量查询所有歌曲
+    List<Song> allSongasViewCounts();
 }

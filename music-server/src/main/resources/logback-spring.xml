@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
          <configuration scan="true" scanPeriod="60 seconds">
-    3     <property name="LOG_HOME" value="/datalog/shopping/shopping-goods/"/>
+    3     <property name="LOG_HOME" value="./logs/"/>
     4     <property name="FORMAT" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{25} - %msg%n"/>
     5     <property name="RollingMaxHistory" value="10"/>
     6     <property name="RollingFileNamePattern" value="${LOG_HOME}/%d{yyyy-MM-dd}.%i"/>

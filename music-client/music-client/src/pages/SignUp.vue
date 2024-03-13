@@ -28,14 +28,14 @@
             <el-form-item prop="birth" label="生日">
                 <el-date-picker v-model="registerForm.birth" placeholder="选择日期" style="width: 100%;"></el-date-picker>
             </el-form-item>
-            <el-form-item prop="introduction" label="签名">
+            <!-- <el-form-item prop="introduction" label="签名">
                 <el-input v-model="registerForm.introduction" placeholder="签名"></el-input>
-            </el-form-item>
-            <el-form-item prop="location" label="地区">
+            </el-form-item> -->
+            <!-- <el-form-item prop="location" label="地区">
                 <el-select v-model="registerForm.location" placeholder="地区" style="width: 100%;">
                     <el-option v-for=" item in cities" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
-            </el-form-item>
+            </el-form-item> -->
             <div class="login-btn">
                 <el-button @click="goback(-1)">取消</el-button>
                 <el-button type="primary" @click="SignUp">确定</el-button>

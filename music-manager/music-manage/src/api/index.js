@@ -27,6 +27,8 @@ export const songOfSongId =(id) => get(`song/detail?songId=${id}`);
 export const songOfSongName =(songName) => get(`song/songOfSongName?songName=${songName}`);
 //查询所有歌曲
 export const allSong =() => get(`song/allSong`);
+//根据播放量倒序查询所有歌曲
+export const allSongasViewCounts =() => get(`song/allSongasViewCounts`);
 
 //============歌单相关================
 //查询歌单
@@ -69,4 +71,6 @@ export const deleteCollection = (userId,songId) => get(`collect/delete?userId=${
 export const getCommentOfSongListId = (songListId) => get(`/comment/commentOfSongListId?songListId=${songListId}`);
 //删除评论
 export const deleteComment = (id) => get(`comment/delete?id=${id}`);
+//查询所有评论
+export const allComment = () => get(`/comment/allComment`)
 

@@ -14,6 +14,10 @@ export const songOfSingerId =(id) => get(`song/singer/detail?singerId=${id}`);
 export const songOfSongId =(id) => get(`song/detail?songId=${id}`);
 //根据歌手名称模糊查询歌曲
 export const likeSongOfName =(keywords) => get(`song/likeSongOfName?singerName=${keywords}`);
+//根据播放量倒序查询所有歌曲
+export const allSongasViewCounts =() => get(`song/allSongasViewCounts`);
+//查询所有歌曲
+export const getAllSong =() => get(`song/allSong`);
 
 //============歌单相关================
 //查询歌单

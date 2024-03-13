@@ -1,6 +1,6 @@
 <template>
   <div class="login-wrap">
-    <div class="ms-title">music 后台管理登录</div>
+    <div class="ms-title">校园在线音乐管理系统后台管理</div>
     <div class="ms-login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item prop="username">
@@ -83,7 +83,7 @@ export default {
   left: 50%;
   top: 50%;
   width: 300px;
-  height: 160px;
+  height: 150px;
   margin-left: -190px;
   margin-top: -150px;
   padding: 40px;

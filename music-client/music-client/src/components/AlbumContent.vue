@@ -33,7 +33,8 @@ export default {
     name: 'album-content',
     mixins: [mixin],
     props:[
-        'songList'
+        'songList',
+        'song'
     ]
 }
 </script>

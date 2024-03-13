@@ -28,7 +28,8 @@ export default {
         return {
             settingList:[
                 {name: '个人信息',path: 'Info'},
-                {name: '修改头像',path: 'Upload'}
+                {name: '修改头像',path: 'Upload'},
+                {name: '会员功能',path: ''},
             ],
             activeName: '个人信息',
             componentSrc: 'Info'
